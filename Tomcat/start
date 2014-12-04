@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo chown -R bematech:bematech $CATALINA_BASE
+
+if [ ! -d "$CATALINA_BASE/webapps" ]; then
+	echo Copiando arquivos do tomcat.
+	sudo cp -R $CATALINA_HOME/conf $CATALINA_HOME/lib $CATALINA_HOME/temp $CATALINA_HOME/webapps $CATALINA_HOME/logs $CATALINA_BASE/.
+fi 
+
+sudo chown -R bematech:bematech $CATALINA_BASE
+
+exec catalina.sh run
